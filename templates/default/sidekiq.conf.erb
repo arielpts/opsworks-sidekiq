@@ -19,7 +19,7 @@ stop on (stopping workers or runlevel [06])
 
 # set the environment variables from the OpsWorks App Interface
 <% @environment_variables.each_pair do |k, v| %>
-env <%= k %>=<%= v %>
+env <%= k %>=<%= v.gsub('\\\\"', '\\"') # ugly fix for fix quote escaping %>
 <% end %>
 
 # change to match your deployment user
